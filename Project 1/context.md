@@ -37,3 +37,15 @@ We will target **CartPole-v1** first for rapid iteration, then scale to **LunarL
 
 ## 📚 Key Reference
 - [Proximal Policy Optimization Algorithms (Schulman et al., 2017)](https://arxiv.org/abs/1707.06347)
+
+## Implementation Notes
+
+- **Network architecture**: We use a shared MLP backbone with two hidden layers
+  (64 units for CartPole, 128 units for LunarLander) and separate policy/value
+  heads, with Tanh activations as in the PPO paper.
+- **GAE + returns**: Implemented per-step using $(\gamma, \\lambda) = (0.99, 0.95)$
+  and normalized advantages for stability.
+- **PPO objective**: Clipped surrogate with clip range $\\epsilon = 0.2$, plus
+  a clipped value loss and an entropy bonus for exploration.
+- **Optimization & stability**: Adam optimizer, gradient clipping at 0.5, and
+  optional KL-based early stopping on updates.

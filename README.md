@@ -14,6 +14,31 @@ The transition to post-training requires two main pillars:
 **Goal:** Implement **Proximal Policy Optimization (PPO)** in PyTorch for standard gymnasium environments.
 - **Key Concepts:** Actor-Critic, Clipped Surrogate Objective, GAE, Entropy exploration.
 
+#### How to run Project 1
+
+- **Install dependencies** (example with pip):
+
+```bash
+pip install torch gymnasium[box2d]
+```
+
+- **Train on CartPole-v1**:
+
+```bash
+cd "Project 1"
+python train_cartpole.py
+```
+
+- **Train on LunarLander-v2**:
+
+```bash
+cd "Project 1"
+python train_lunarlander.py
+```
+
+Training metrics (episode returns, losses, KL, eval returns) are logged as CSV
+under `Project 1/logs/`. Checkpoints are saved under `Project 1/checkpoints/`.
+
 ### Project 2: "Instruction Tuner" - SFT & PEFT
 **Goal:** Supervised Fine-Tuning (SFT) on a 1B-3B model (e.g., Llama-3.2-1B) for specialized domains.
 - **Key Concepts:** LoRA, QLoRA, ChatML formatting, Gradient Checkpointing.

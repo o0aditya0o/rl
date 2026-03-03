@@ -1,0 +1,14 @@
+env_id: LunarLander-v2
+total_steps: 500000
+rollout_steps: 4096
+gamma: 0.99
+gae_lambda: 0.95
+clip_range: 0.2
+lr: 0.0003
+epochs: 10
+batch_size: 128
+seed: 1
+log_dir: Project 1/logs/lunarlander
+eval_interval: 20000
+device: cpu
+
