@@ -19,7 +19,7 @@ The transition to post-training requires two main pillars:
 - **Install dependencies** (example with pip):
 
 ```bash
-pip install torch gymnasium[box2d]
+pip install torch "gymnasium[box2d]"
 ```
 
 - **Train on CartPole-v1**:

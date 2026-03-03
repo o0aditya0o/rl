@@ -123,12 +123,18 @@ def main() -> None:
                 if done:
                     obs, _info = env.reset()
                     obs = torch.as_tensor(obs, dtype=torch.float32, device=device)
+                    # Log episode stats; keep metric columns consistent across rows.
                     logger.log(
                         {
                             "global_step": global_step,
                             "episode": episode_idx,
                             "episode_return": episode_return,
                             "episode_length": episode_length,
+                            "policy_loss": None,
+                            "value_loss": None,
+                            "entropy": None,
+                            "kl": None,
+                            "eval_return": None,
                         }
                     )
                     episode_return = 0.0
@@ -145,10 +151,13 @@ def main() -> None:
             row = {
                 "global_step": global_step,
                 "episode": episode_idx,
+                "episode_return": None,
+                "episode_length": None,
                 "policy_loss": metrics["policy_loss"],
                 "value_loss": metrics["value_loss"],
                 "entropy": metrics["entropy"],
                 "kl": metrics["kl"],
+                "eval_return": None,
             }
 
             if global_step % args.eval_interval < args.rollout_steps:
